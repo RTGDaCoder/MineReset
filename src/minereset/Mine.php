@@ -7,34 +7,43 @@ use pocketmine\level\Level;
 use pocketmine\math\Vector3;
 
 class Mine{
+    
     public $a, $b, $lev, $data;
     /** @var MineReset  */
     private $base;
-    public function __construct(MineReset $base, Vector3 $a, Vector3 $b, Level $level, array $data = []){
+    
+    public function __construct(MineReset $base, Vector3 $a, Vector3 $b, Level $level, $data = []){
         $this->a = $a;
         $this->b = $b;
         $this->base = $base;
         $this->data = $data;
         $this->level = $level;
     }
+    
     public function isMineSet(){
         return (count($this->data) != 0);
     }
+    
     public function setData(array $arr){
         $this->data = $arr;
     }
+    
     public function getA(){
         return $this->a;
     }
+    
     public function getB(){
         return $this->b;
     }
+    
     public function getLevel(){
         return $this->level;
     }
+    
     public function getData(){
         return $this->data;
     }
+    
     public function resetMine(){
         $chunks = [];
         for ($x = $this->getA()->getX(); $x-16 <= $this->getB()->getX(); $x += 16){
